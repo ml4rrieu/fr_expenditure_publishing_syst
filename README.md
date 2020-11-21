@@ -10,8 +10,8 @@ Limits : a lot of APC are missing. However, the big part of expenditures comes f
 
 
 ## Data
-Libraries expenditure
+Libraries expenditure<br />
 https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-enquete-ressources-electroniques-etablissements/information/ <br />
-APC 
+APC <br />
 https://treemaps.intact-project.org/apcdata/openapc/#institution/country=FRA
 
