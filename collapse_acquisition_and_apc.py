@@ -21,7 +21,7 @@ print("to publish")
 
 # do graph
 plt.style.use('seaborn-pastel')
-fig, ax = plt.subplots(figsize=(14, 8), dpi = 100)
+fig, ax = plt.subplots(figsize=(10, 6), dpi = 100)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
