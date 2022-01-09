@@ -1,7 +1,9 @@
 import pandas as pd, matplotlib.pyplot as plt, matplotlib as mpl
 
+## from https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-enquete-ressources-electroniques-etablissements/information/
 df = pd.read_csv("fr-esr-enquete-ressources-electroniques-etablissements.csv", sep = ';')
 
+# from https://treemaps.intact-project.org/apcdata/openapc/#institution/country=FRA
 dfapc = pd.read_csv("fr_apc.csv")
 
 reading_price, apc_price = {}, {}
@@ -16,8 +18,10 @@ print("to read")
 print("to publish")
 [print(f"{k}\t{apc_price[k]}") for k in apc_price]
 
+
+# do graph
 plt.style.use('seaborn-pastel')
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(14, 8), dpi = 100)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
@@ -25,10 +29,11 @@ ax.spines['right'].set_visible(False)
 ax.ticklabel_format(style='plain')
 #set , as thousand separator
 ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('€{x:,.0f}'))
-#ax.figure( figsize =(4,3))
-ax.bar(reading_price.keys(), reading_price.values(), label = "to read" )
 
-ax.bar(apc_price.keys(), apc_price.values(), bottom = list(reading_price.values()), label = "to publish" )
+
+# put data inside the graph
+ax.bar(reading_price.keys(), reading_price.values(), label = "to read (online scientific resources)" )
+ax.bar(apc_price.keys(), apc_price.values(), bottom = list(reading_price.values()), label = "to publish (APC)" )
 
 #remove origin
 yticks = ax.yaxis.get_major_ticks()
@@ -40,9 +45,10 @@ plt.gca().xaxis.grid(False)
 
 
 #legend
-plt.legend(loc="upper left")
-plt.title("French expenditure (which we know) about scientific publishing", fontsize = 18, y = 1.08)
-plt.show()
+plt.legend(loc="upper center", bbox_to_anchor=(0.5, 0.7), fontsize = 15)
+plt.title("French spending on scientific publishing", fontsize = 24, y = 0.99)
 
+
+plt.savefig("french_spending.png")
 
 #print(len(df2015))
